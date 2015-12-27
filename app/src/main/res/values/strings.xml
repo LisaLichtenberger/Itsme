@@ -3,4 +3,17 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_splash_screen">SplashScreen</string>
+    <string name="title_activity_tags">Tags</string>
+    <string name="title_activity_profil">Profil</string>
+    <string name="title_activity_nachrichten">Nachrichten</string>
+    <string name="title_activity_matching">Matching</string>
+    <string-array name="pages_array">
+        <item>Tags</item>
+        <item>Profil</item>
+        <item>Nachrichten</item>
+        <item>Matching</item>
+        <item>Switch to button mode</item>
+    </string-array>
+    <string name="title_activity_tutorial">Tutorial</string>
 </resources>
