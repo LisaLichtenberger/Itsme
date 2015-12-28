@@ -1,6 +1,7 @@
 package at.fhooe.mc.android.itsme;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,8 +13,9 @@ public class HomeScreenActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home_screen);
-	}
 
+
+	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -31,6 +33,11 @@ public class HomeScreenActivity extends Activity {
 
 		//noinspection SimplifiableIfStatement
 		if (id == R.id.action_settings) {
+			return true;
+		} else if (id == R.id.profile){
+			Intent i = new Intent(HomeScreenActivity.this, FragmentSwipe.class);
+			startActivity(i);
+//			finish();
 			return true;
 		}
 

@@ -31,28 +31,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Tags"
-            android:label="@string/title_activity_tags" >
-        </activity>
-        <activity
-            android:name=".Profil"
-            android:label="@string/title_activity_profil" >
-        </activity>
-        <activity
-            android:name=".Nachrichten"
-            android:label="@string/title_activity_nachrichten" >
-        </activity>
-        <activity
-            android:name=".Matching"
-            android:label="@string/title_activity_matching" >
-        </activity>
-        <activity
             android:name=".FragmentSwipe"
             android:label="@string/title_activity_fragment_swipe" >
-        </activity>
-        <activity
-            android:name=".Profile"
-            android:label="@string/title_activity_profile" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="at.fhooe.mc.android.itsme.HomeScreenActivity" />
         </activity>
     </application>
 

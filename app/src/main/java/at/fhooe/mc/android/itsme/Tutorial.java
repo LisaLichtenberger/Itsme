@@ -1,17 +1,27 @@
 package at.fhooe.mc.android.itsme;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 
-public class Tutorial extends Activity {
+public class Tutorial extends Activity implements View.OnClickListener {
+
+	private static final String TAG = "Itsme";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tutorial);
+
+		Button b = null;
+		b = (Button)findViewById(R.id.skip);
+		b.setOnClickListener(this);
 	}
 
 
@@ -35,5 +45,20 @@ public class Tutorial extends Activity {
 		}
 
 		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	public void onClick(View _view) {
+		switch(_view.getId()) {
+			case R.id.skip: {
+				Intent i = new Intent(Tutorial.this, HomeScreenActivity.class);
+				startActivity(i);
+				finish();
+			}
+			break;
+			default: {
+				Log.i(TAG, "Invalid click encountered in TutorialActivity...");
+			}
+		}
 	}
 }
