@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 
+import at.fhooe.mc.android.itsme.tutorial.Tutorial;
+
 
 public class SplashScreen extends Activity {
 

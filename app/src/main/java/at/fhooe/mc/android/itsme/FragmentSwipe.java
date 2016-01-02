@@ -1,7 +1,7 @@
 package at.fhooe.mc.android.itsme;
 
 import android.app.ActionBar;
-import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,16 +11,19 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.text.Html;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 public class FragmentSwipe extends FragmentActivity implements ViewPager.OnPageChangeListener,Tags.OnFragmentInteractionListener,
-		News.OnFragmentInteractionListener,Matching.OnFragmentInteractionListener,Profile.OnFragmentInteractionListener, ActionBar.TabListener {
+		News.OnFragmentInteractionListener,Matching.OnFragmentInteractionListener,Profile.OnFragmentInteractionListener{
 
 	/**
-	 * The number of pages (wizard steps) to show in this demo.
+	 * The number of pages (wizard steps) to show .
 	 */
 	private static final int NUM_PAGES = 4;
+	private static final String TAG = "Itsme" ;
 
 	/**
 	 * The pager widget, which handles animation and allows swiping horizontally to access previous
@@ -35,7 +38,6 @@ public class FragmentSwipe extends FragmentActivity implements ViewPager.OnPageC
 
 	private Fragment f;
 	private ActionBar ab;
-	public String[] tabsName;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +52,28 @@ public class FragmentSwipe extends FragmentActivity implements ViewPager.OnPageC
 		mViewPager.setOnPageChangeListener(this);
 
 		ab = getActionBar();
-		ab.setIcon(R.drawable.logo);
-		ab.setDisplayShowTitleEnabled(false);
+		ab.setIcon(R.drawable.itsme);
+		ab.setDisplayShowTitleEnabled(true);
+
+		Intent i = getIntent();
+		Bundle bundle = i.getExtras();
+
+		if(bundle.getInt("item") == 0){
+			mViewPager.setCurrentItem(0);
+			ab.setTitle(Html.fromHtml("<font color='#ffffff'>Tags</font>"));
+		} else if(bundle.getInt("item") == 1){
+			mViewPager.setCurrentItem(1);
+			ab.setTitle(Html.fromHtml("<font color='#ffffff'>Profile</font>"));
+		} else if(bundle.getInt("item") == 2){
+			mViewPager.setCurrentItem(2);
+			ab.setTitle(Html.fromHtml("<font color='#ffffff'>News</font>"));
+		} else if(bundle.getInt("item") == 3){
+			mViewPager.setCurrentItem(3);
+			ab.setTitle(Html.fromHtml("<font color='#ffffff'>Matching</font>"));
+		} else {
+			ab.setDisplayShowTitleEnabled(false);
+		}
+
 //		ab.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
 		// ---------------------------ACTION BAR TABS--------------------------
@@ -86,17 +108,48 @@ public class FragmentSwipe extends FragmentActivity implements ViewPager.OnPageC
 		int id = item.getItemId();
 
 		if (id == R.id.tags) {
-
+			mViewPager.setCurrentItem(0);
+			ab.setTitle(Html.fromHtml("<font color='#ffffff'>Tags</font>"));
 			return true;
 		} else if(id == R.id.profile){
-			return true;
-		} else if(id == R.id.matching){
+			mViewPager.setCurrentItem(1);
+			ab.setTitle(Html.fromHtml("<font color='#ffffff'>Profile</font>"));
 			return true;
 		} else if(id == R.id.news){
+			mViewPager.setCurrentItem(2);
+			ab.setTitle(Html.fromHtml("<font color='#ffffff'>News</font>"));
 			return true;
+		} else if(id == R.id.matching){
+			mViewPager.setCurrentItem(3);
+			ab.setTitle(Html.fromHtml("<font color='#ffffff'>Matching</font>"));
+			return true;
+		} else if(id == android.R.id.home) {
+			Intent i = new Intent(FragmentSwipe.this, HomeScreenActivity.class);
+			startActivity(i);
+			finish();
+		} else {
+			ab.setTitle(Html.fromHtml("<font color='#ffffff'>Tags</font>"));
+			Log.e(TAG, "unknown option item ID encountered ...");
 		}
-
 		return super.onOptionsItemSelected(item);
+
+
+		// determine the menu item you want to highlight when selected
+//		switch(item.getItemId()) {
+//			case R.id.tags : {
+//				if (mSomeValue) {
+//					item.getIcon().setColorFilter(235, PorterDuff.Mode.MULTIPLY);
+//
+//					mSomeValue = false;
+//				} else {
+//					mSomeValue = true;
+//					item.getIcon().setColorFilter(100, PorterDuff.Mode.MULTIPLY);
+//				}
+//
+//			} break;
+//		}
+
+
 	}
 
 	@Override
@@ -111,26 +164,21 @@ public class FragmentSwipe extends FragmentActivity implements ViewPager.OnPageC
 
 	@Override
 	public void onPageScrollStateChanged(int i) {
-
+		if(mViewPager.getCurrentItem()==0){
+			ab.setTitle(Html.fromHtml("<font color='#ffffff'>Tags</font>"));
+		} else if(mViewPager.getCurrentItem()==1){
+			ab.setTitle(Html.fromHtml("<font color='#ffffff'>Profile</font>"));
+		} else if(mViewPager.getCurrentItem()==2){
+			ab.setTitle(Html.fromHtml("<font color='#ffffff'>News</font>"));
+		} else if(mViewPager.getCurrentItem()==3){
+			ab.setTitle(Html.fromHtml("<font color='#ffffff'>Matching</font>"));
+		} else {
+			ab.setDisplayShowTitleEnabled(false);
+		}
 	}
 
 	@Override
 	public void onFragmentInteraction(Uri uri) {
-
-	}
-
-	@Override
-	public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
-
-	}
-
-	@Override
-	public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
-
-	}
-
-	@Override
-	public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
 
 	}
 

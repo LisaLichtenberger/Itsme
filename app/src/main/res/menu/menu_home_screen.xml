@@ -6,26 +6,26 @@
           android:title="@string/action_settings"
           android:orderInCategory="100"/>
 
+    <item android:id="@+id/tags"
+          android:title="@string/Tags"
+          android:orderInCategory="100"
+          android:showAsAction ="always"
+          android:icon="@drawable/tags"/>
+
     <item android:id="@+id/profile"
           android:title="@string/Profile"
           android:orderInCategory="100"
           android:showAsAction ="always"
           android:icon="@drawable/profile"/>
 
-    <item android:id="@+id/tags"
-          android:title="@string/Profile"
-          android:orderInCategory="100"
-          android:showAsAction ="always"
-          android:icon="@drawable/tags"/>
-
     <item android:id="@+id/news"
-          android:title="@string/Profile"
+          android:title="@string/News"
           android:orderInCategory="100"
           android:showAsAction ="always"
           android:icon="@drawable/news"/>
 
     <item android:id="@+id/matching"
-          android:title="@string/Profile"
+          android:title="@string/Matching"
           android:orderInCategory="100"
           android:showAsAction ="always"
           android:icon="@drawable/matching"/>

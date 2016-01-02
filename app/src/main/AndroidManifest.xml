@@ -10,7 +10,7 @@
         android:label="Itsme"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".Tutorial"
+            android:name=".tutorial.Tutorial"
             android:label="@string/title_activity_tutorial"
             android:parentActivityName=".SplashScreen" >
             <meta-data
